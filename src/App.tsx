@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Module from "./content/Module";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface AppProps {
+    modules: Module[];
 }
 
-export default App;
+export interface AppState {
+    module: Number;
+    submodule: Number;
+    page: Number;
+}
+
+export default class App extends React.Component<AppProps, AppState> {
+
+    public constructor(props: AppProps) {
+        super(props);
+        this.state = {module: 1, submodule: 1, page: 1};
+    }
+
+    public setPage(s: Partial<AppState>) {
+        const newState = Object.assign(Object.assign(this.state, {}), s);
+        this.setState(newState);
+    }
+
+    public render() {
+        return (
+            <div className="container-fluid d-flex flex-row">
+                <div className="navbar">
+
+                </div>
+                <div className="d-flex flex-column flex-grow-1">
+                    {this.props.modules.map(e => e.jsx())}
+                </div>
+            </div>
+        )
+    }
+}
