@@ -16,7 +16,7 @@ export default class Module {
 
     public jsx(): JSX.Element {
         return (
-            <div id={this.id} className="module d-flex flex-column align-items-center shadow-sm bg-light-1 my-4 px-2 w-100">
+            <div id={this.id} key={this.id} className="module d-flex flex-column align-items-center shadow-sm bg-light-1 my-4 px-2 w-100">
                 <a href={`#${this.id}`} className="title-module my-3">{this.title}</a>
                 {this.header && <hr className="w-100"/>}
                 {this.header && this.header}

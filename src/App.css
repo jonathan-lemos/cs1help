@@ -1,16 +1,28 @@
+code {
+    white-space: nowrap;
+}
+
 html {
     scroll-behavior: smooth;
     background-color: #DDD;
     color: #333;
 }
 
+div.main_content {
+    width: 80%;
+}
+
 div.sidebar {
     align-items: stretch;
+    bottom: 0;
     border-left: #55555555 solid 0.25em;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    min-height: 100vh;
+    justify-content: flex-start;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
     width: 20%;
 }
 
@@ -64,5 +76,5 @@ a.title-page {
 }
 
 .nav-link-active {
-    color: #338;
+    color: #833;
 }

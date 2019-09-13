@@ -36,7 +36,7 @@ export default class NavbarLink extends React.Component<NavbarLinkProps, NavbarL
         }
     }
 
-    public handleScroll(): void {
+    public handleScroll = () => {
         const section = document.getElementById(this.props.reference.id);
         if (section === null) {
             return;
@@ -44,44 +44,51 @@ export default class NavbarLink extends React.Component<NavbarLinkProps, NavbarL
         const sectionTop = section.offsetTop;
         const sectionBot = sectionTop + section.offsetHeight;
         const windowTop = window.pageYOffset;
-        const windowBot = window.innerHeight;
-        if (windowTop < sectionBot && windowBot > sectionTop) {
+        const windowBot = windowTop + window.innerHeight;
+        this.setActive(windowTop <= sectionBot && windowBot >= sectionTop)
+    };
 
-        }
+    public componentDidMount(): void {
+        window.addEventListener("scroll", this.handleScroll);
+        this.handleScroll();
+    }
+
+    public componentWillUnmount(): void {
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     public render() {
         if (this.props.reference instanceof Module) {
             return (
-                <div>
+                <div className="bg-light-1">
                     <a href={`#${this.props.reference.id}`}
                        className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
                        style={{fontSize: "100%"}}>{this.props.reference.title}</a>
                     {this.state.active && this.props.reference.submodules.map(e => {
-                        return <NavbarLink reference={e}/>
+                        return <NavbarLink key={e.id} reference={e}/>
                     })}
                 </div>
-            )
+            );
         }
         if (this.props.reference instanceof Submodule) {
             return (
-                <div>
+                <div className="bg-light-2">
                     <a href={`#${this.props.reference.id}`}
                        className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
-                       style={{fontSize: "90%"}}>&nbsp;&nbsp;{this.props.reference.title}</a>
+                       style={{fontSize: "90%"}}>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>
                     {this.state.active && this.props.reference.pages.map(e => {
-                        return <NavbarLink reference={e}/>
+                        return <NavbarLink key={e.id} reference={e}/>
                     })}
                 </div>
-            )
+            );
         } else {
             return (
-                <div>
+                <div className="bg-light-3">
                     <a href={`#${this.props.reference.id}`}
                        className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
-                       style={{fontSize: "80%"}}>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>
+                       style={{fontSize: "80%"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>
                 </div>
-            )
+            );
         }
     }
 }

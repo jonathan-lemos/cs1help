@@ -16,7 +16,7 @@ export default class Submodule {
 
     public jsx(): JSX.Element {
         return (
-            <div id={this.id} className="submodule d-flex flex-column align-items-center bg-light-2 my-2 px-2 w-100">
+            <div id={this.id} key={this.id} className="submodule d-flex flex-column align-items-center bg-light-2 my-2 px-2 w-100">
                 <a href={`#${this.id}`} className="title-submodule my-2">{this.title}</a>
                 {this.header && <hr className="w-100"/>}
                 {this.header && this.header}

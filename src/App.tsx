@@ -15,7 +15,7 @@ export default class App extends React.Component<AppProps> {
     public render() {
         return (
             <div className="w-100 d-flex flex-row">
-                <div className="d-flex flex-column flex-grow-1">
+                <div className="d-flex flex-column main_content">
                     {this.props.modules.map(e => e.jsx())}
                 </div>
                 <Navbar modules={this.props.modules} />

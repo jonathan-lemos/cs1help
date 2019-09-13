@@ -1,7 +1,7 @@
 import Page from "../../../Page";
 import React from "react";
 
-export default new Page("1-1-2", "About",
+export default new Page("welcome-welcome-about", "About",
     <div>
         <p>
             The primary motivation for this project is to help build a semi-decent foundation for new programmers that

@@ -16,7 +16,7 @@ export default class Navbar extends React.Component<NavbarProps> {
         return (
             <div className="sidebar">
                 {this.props.modules.map(e => {return (
-                    <NavbarLink reference={e} />
+                    <NavbarLink key={e.id} reference={e} />
                 )})}
             </div>
         )
