@@ -6,13 +6,12 @@ html {
 
 div.sidebar {
     align-items: stretch;
-    border-right: #55555555 solid 0.25em;
+    border-left: #55555555 solid 0.25em;
     display: flex;
     flex-direction: column;
-    left: 0;
+    justify-content: start;
     min-height: 100vh;
-    position: fixed;
-    width: 10%;
+    width: 20%;
 }
 
 div.sidebar > li {
@@ -57,4 +56,13 @@ a.title-page {
 
 .bg-light-3 {
     background-color: #E0E0E0;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-link-active {
+    color: #338;
 }
