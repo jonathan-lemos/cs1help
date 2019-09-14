@@ -1,13 +1,12 @@
 import Page from "../../../Page";
 import React from "react";
+import Replit from "../../../../Replit";
 
 export default new Page("computerscience1-basicsofc-helloworld", "Hello World", <div>
     <p>
         Now you're ready to make your first C program, and it looks like this:
     </p>
-    <iframe height="400px" width="100%" src="https://repl.it/repls/BlandCommonTrapezoid?lite=true" scrolling="no"
-            frameBorder="no" allowTransparency={true} allowFullScreen={true}
-            sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"/>
+    <Replit href="https://repl.it/repls/BlandCommonTrapezoid?lite=true" title="Hello World Example" />
     <p>
         and you're wondering, "what the hell is this supposed to mean?" And your professor probably told you: "don't
         worry about that, just copy this code", and now you're in the habit of memorizing a bunch of bullshit that
