@@ -3,6 +3,7 @@ import './App.css';
 import Module from "./content/Module";
 import Page from "./content/Page";
 import Submodule from "./content/Submodule";
+import {Fade} from "./Fade";
 
 export interface NavbarLinkProps {
     reference: Module | Submodule | Page;
@@ -14,26 +15,24 @@ export interface NavbarLinkState {
 }
 
 export default class NavbarLink extends React.Component<NavbarLinkProps, NavbarLinkState> {
+    private children: Array<NavbarLink | null>;
+
     public static defaultProps: Partial<NavbarLinkProps> = {
         active: false
     };
 
     public constructor(props: NavbarLinkProps) {
         super(props);
-        this.state = {active: this.props.active}
+        this.state = {active: this.props.active};
+        this.children = [];
     }
 
     public active(): boolean {
         return this.state.active;
     }
 
-    public setActive(active?: boolean): void {
-        if (active === undefined) {
-            this.setState({active: !this.state.active});
-        }
-        else {
-            this.setState({active});
-        }
+    public setActive(active: boolean): void {
+        this.setState({active});
     }
 
     public handleScroll = () => {
@@ -55,35 +54,40 @@ export default class NavbarLink extends React.Component<NavbarLinkProps, NavbarL
 
     public componentWillUnmount(): void {
         window.removeEventListener("scroll", this.handleScroll);
+        setTimeout(() => {
+        }, 700);
     }
 
     public render() {
+        this.children = [];
         if (this.props.reference instanceof Module) {
             return (
-                <div className="bg-light-1">
+                <div className={"bg-light-1 fadein"}>
                     <a href={`#${this.props.reference.id}`}
-                       className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
+                       className={`nav-link`}
                        style={{fontSize: "100%"}}>{this.props.reference.title}</a>
-                    {this.state.active && this.props.reference.submodules.map(e => {
-                        return <NavbarLink key={e.id} reference={e}/>
+                    {this.props.reference.submodules.map(e => {
+                        return <NavbarLink key={e.id} ref={e => this.children.push(e)} reference={e}/>
                     })}
                 </div>
             );
         }
         if (this.props.reference instanceof Submodule) {
             return (
-                <div className="bg-light-2">
-                    <a href={`#${this.props.reference.id}`}
-                       className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
-                       style={{fontSize: "90%"}}>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>
-                    {this.state.active && this.props.reference.pages.map(e => {
-                        return <NavbarLink key={e.id} reference={e}/>
-                    })}
-                </div>
+                <Fade render={this.state.active}>
+                    <div className={`bg-light-2`}>
+                        <a href={`#${this.props.reference.id}`}
+                           className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
+                           style={{fontSize: "90%"}}>&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>
+                        {this.props.reference.pages.map(e => {
+                            return <NavbarLink key={e.id} reference={e}/>
+                        })}
+                    </div>
+                </Fade>
             );
         } else {
             return (
-                <div className="bg-light-3">
+                <div className="bg-light-3 fadein">
                     <a href={`#${this.props.reference.id}`}
                        className={`nav-link ${this.state.active ? "nav-link-active" : ""}`}
                        style={{fontSize: "80%"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.props.reference.title}</a>

@@ -78,3 +78,76 @@ a.title-page {
 .nav-link-active {
     color: #833;
 }
+
+.fadein {
+    animation: fadein ease 0.4s forwards;
+}
+
+.fadeout {
+    animation: fadeout ease 0.4s forwards;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    to {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+div.code-block {
+    white-space: pre-wrap;
+    font-family: monospace;
+    background-color: #D8D8D8;
+}
+
+span.code-keyword {
+    color: #883344;
+    font-weight: 800;
+}
+
+span.code-number {
+    color: #4477BB;
+}
+
+span.code-string {
+    color: #55BB44;
+}
+
+span.code-string-escape {
+    color: #55BB99;
+    font-weight: 800;
+}
+
+span.code-comment {
+    color: #888888;
+}
+
+span.code-error {
+    color: #AA3333;
+    font-weight: 700;
+}
+
+span.code-warning {
+    color: #DDAA33;
+    font-weight: 700;
+}
+
+span.pre {
+    white-space: pre;
+}
+
