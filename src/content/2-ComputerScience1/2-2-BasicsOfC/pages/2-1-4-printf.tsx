@@ -18,7 +18,7 @@ export default new Page("computerscience1-basicsofc-printf", "printf", <div>
             "int x = 4;",
             "double y = 3.14;",
             "char* z = \"abc\";",
-            "printf(\"thing 1: %d, thing 2: %lf, thing 3: %s\", x, y, z);",
+            "printf(\"thing 1: %d, thing 2: %lf, thing 3: %s\\n\", x, y, z);",
         ]}/>
         <p>
             Which prints <code>thing 1: 4, thing 2: 3.14000, thing 3: abc</code> to the screen.

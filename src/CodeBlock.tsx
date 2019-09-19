@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface CodeBlockProps {
-    language: "c" | "gcc";
+    language: "c" | "gcc" | "text";
     text: string | string[]
 }
 
@@ -12,11 +12,25 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             style: "code-keyword"
         },
         {
-            key: /\b[+\-]?\d+(\.\d+)([eE][+\-]?\d+)?\b/,
+            key: /\b[+-]?\d+(\.\d+)?([eE][+-]?\d+)?\b/,
             style: "code-number"
         },
         {
-            key: /\b"(\\"|[^"])*?"\b/,
+            key: /"(\\"|[^"])*?"/,
+            style: "code-string",
+            nest: [
+                {
+                    key: /\\./,
+                    style: "code-string-escape"
+                },
+                {
+                    key: /%.*?[xXfdusc%]/,
+                    style: "code-string-percent"
+                }
+            ]
+        },
+        {
+            key: /'..?'/,
             style: "code-string",
             nest: [
                 {
@@ -28,6 +42,10 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
         {
             key: /\/\/.*$|\/\*.*?\*\//m,
             style: "code-comment"
+        },
+        {
+            key: /#.*$/,
+            style: "code-preprocessor"
         }
     ],
     "gcc": [
@@ -47,7 +65,8 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             key: /\d+:\d+/,
             style: "code-keyword"
         }
-    ]
+    ],
+    "test": []
 };
 
 const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?: Array<{ key: RegExp, style: string }> }>): JSX.Element[] => {
@@ -57,7 +76,7 @@ const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?:
         let best: [string, number] = ["", 99999];
         let res = buf.match(/^\s+/);
         if (res != null) {
-            ret.push(<span className="pre">res[0]</span>);
+            ret.push(<span className="pre">{res[0]}</span>);
             buf = buf.slice(res[0].length);
             continue;
         }
@@ -81,10 +100,12 @@ const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?:
             ret.push(<span className="pre">{buf.slice(0, best[1])}</span>);
         }
         if (buf2.length > 0) {
-            ret.push(...buf2);
+            ret.push(<span className={cname}>{buf2}</span>);
         }
-        ret.push(<span className={cname}>best[0]</span>);
-        buf = buf.slice(best[0].length);
+        else {
+            ret.push(<span className={cname}>{best[0]}</span>);
+        }
+        buf = buf.slice(best[1] + best[0].length);
     }
     return ret;
 };
@@ -102,9 +123,9 @@ export default class CodeBlock extends React.Component<CodeBlockProps> {
 
     public render() {
         return this.inline ? (
-            <span>{this.text}</span>
+            <span className="code-block-inline">{this.text}</span>
         ) : (
-            <div>{this.text}</div>
+            <div className="code-block">{this.text}</div>
         )
     }
 }

@@ -110,27 +110,37 @@ a.title-page {
 }
 
 div.code-block {
+    padding: 0.5rem;
     white-space: pre-wrap;
+    font-family: monospace;
+    background-color: #FFFFFF;
+}
+
+span.code-block-inline {
     font-family: monospace;
     background-color: #D8D8D8;
 }
 
 span.code-keyword {
-    color: #883344;
-    font-weight: 800;
+    color: #0033FF;
 }
 
 span.code-number {
-    color: #4477BB;
+    color: #229944;
 }
 
 span.code-string {
-    color: #55BB44;
+    color: #992244;
 }
 
 span.code-string-escape {
-    color: #55BB99;
-    font-weight: 800;
+    color: #FF00FF;
+    font-weight: 900;
+}
+
+span.code-string-percent {
+    color: #0088FF;
+    font-weight: 900;
 }
 
 span.code-comment {
@@ -145,6 +155,10 @@ span.code-error {
 span.code-warning {
     color: #DDAA33;
     font-weight: 700;
+}
+
+span.code-preprocessor {
+    color: #0033FF;
 }
 
 span.pre {
