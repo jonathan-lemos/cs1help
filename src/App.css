@@ -113,10 +113,11 @@ div.code-block {
     padding: 0.5rem;
     white-space: pre-wrap;
     font-family: monospace;
-    background-color: #FFFFFF;
+    background-color: #D8D8D8;
 }
 
 span.code-block-inline {
+    white-space: nowrap;
     font-family: monospace;
     background-color: #D8D8D8;
 }

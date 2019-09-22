@@ -1,5 +1,6 @@
 import Page from "../../../Page";
 import React from "react";
+import CodeBlock from "../../../../CodeBlock";
 
 export default new Page("computerscience1-basicsofc-theosprey", "The Osprey", <div>
     <p>
@@ -8,11 +9,30 @@ export default new Page("computerscience1-basicsofc-theosprey", "The Osprey", <d
         Here's the bare minimum you need to know how to use it:
     </p>
     <p>
-        To log into the Osprey, open a command prompt or terminal and type the following:
+        To log into the Osprey, open a command prompt or terminal by doing
+        <table className="table">
+            <tbody>
+            <tr>
+                <th>OS</th>
+                <th>Do This</th>
+            </tr>
+            <tr>
+                <td>Windows</td>
+                <td>Click the start menu. Type in <CodeBlock text="cmd"/>.</td>
+            </tr>
+            <tr>
+                <td>OSX</td>
+                <td>Press <CodeBlock text="Cmd + Space"/> and then type in "Terminal".</td>
+            </tr>
+            <tr>
+                <td>Linux</td>
+                <td>If you're using Linux, you already know how to open a terminal.</td>
+            </tr>
+            </tbody>
+        </table>
+        and then type in
     </p>
-    <code>
-        ssh [n-number]@osprey.unf.edu
-    </code>
+    <CodeBlock language="text" text="ssh [n-number]@osprey.unf.edu"/>
     <p className="pt-2">
         Enter your UNF password when prompted. Once you log in, use the following commands:
     </p>
@@ -24,43 +44,43 @@ export default new Page("computerscience1-basicsofc-theosprey", "The Osprey", <d
         </tr>
         <tr>
             <td>See what's in the current directory</td>
-            <td><code>ls</code></td>
+            <td><CodeBlock text="ls"/></td>
         </tr>
         <tr>
             <td>See what directory I'm in</td>
-            <td><code>pwd</code></td>
+            <td><CodeBlock text="pwd"/></td>
         </tr>
         <tr>
             <td>Make a new directory</td>
-            <td><code>mkdir [directory name]</code></td>
+            <td><CodeBlock text="mkdir [directory name]"/></td>
         </tr>
         <tr>
             <td>Enter a directory</td>
-            <td><code>cd [directory name]</code></td>
+            <td><CodeBlock text="cd [directory name]"/></td>
         </tr>
         <tr>
             <td>Go up a directory</td>
-            <td><code>cd ..</code></td>
+            <td><CodeBlock text="cd .."/></td>
         </tr>
         <tr>
             <td>Edit/create a file</td>
-            <td><code>pico [file]</code></td>
+            <td><CodeBlock text="pico [file]"/></td>
         </tr>
         <tr>
             <td>Remove a file/directory</td>
-            <td><code>rm -r [file or directory]</code></td>
+            <td><CodeBlock text="rm -r [file or directory]"/></td>
         </tr>
         <tr>
             <td>Compile a C project</td>
-            <td><code>gcc [file.c] -o [output]</code></td>
+            <td><CodeBlock text="gcc [file.c] -o [output]"/></td>
         </tr>
         <tr>
             <td>Run an executable</td>
-            <td><code>./executable</code></td>
+            <td><CodeBlock text="./executable"/></td>
         </tr>
         <tr>
             <td>Turn in my project</td>
-            <td><code>turnin [file] [turnin_code]</code></td>
+            <td><CodeBlock text="turnin [file] [turnin_code]"/></td>
         </tr>
     </table>
     <p className="pt-2">

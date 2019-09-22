@@ -8,7 +8,7 @@ export interface CodeBlockProps {
 const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Array<{ key: RegExp, style: string }> }> } = {
     "c": [
         {
-            key: /\bauto\b|\bbreak\b|\bcase\b|\bchar\b|\bconst\b|\bcontinue\b|\bdefault\b|\bdo\b|\bdouble\b|\belse\b|\benum\b|\bextern\b|\bfloat\b|\bfor\b|\bgoto\b|\bif\b|\binline\b|\bint\b|\blong\b|\bregister\b|\brestrict\b|\breturn\b|\bshort\b|\bsigned\b|\bsizeof\b|\bstatic\b|\bstruct\b|\bswitch\b|\btypedef\b|\bunion\b|\bunsigned\b|\bvoid\b|\bvolatile\b|\bwhile\b/,
+            key: /\b_Complex\b|\bauto\b|\bbreak\b|\bcase\b|\bchar\b|\bconst\b|\bcontinue\b|\bdefault\b|\bdo\b|\bdouble\b|\belse\b|\benum\b|\bextern\b|\bfloat\b|\bfor\b|\bgoto\b|\bif\b|\binline\b|\bint\b|\blong\b|\bregister\b|\brestrict\b|\breturn\b|\bshort\b|\bsigned\b|\bsizeof\b|\bstatic\b|\bstruct\b|\bswitch\b|\btypedef\b|\bunion\b|\bunsigned\b|\bvoid\b|\bvolatile\b|\bwhile\b/,
             style: "code-keyword"
         },
         {
@@ -66,10 +66,14 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             style: "code-keyword"
         }
     ],
-    "test": []
+    "text": []
 };
 
 const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?: Array<{ key: RegExp, style: string }> }>): JSX.Element[] => {
+    if (patterns.length === 0) {
+        return str.map(e => <span className="pre">{e}</span>);
+    }
+
     const ret: JSX.Element[] = [];
     let buf = str.join("\n");
     while (buf !== "") {
@@ -111,6 +115,10 @@ const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?:
 };
 
 export default class CodeBlock extends React.Component<CodeBlockProps> {
+    public static defaultProps: Partial<CodeBlockProps> = {
+        language: "text"
+    };
+
     private readonly text: JSX.Element[];
     private readonly inline: boolean;
 
