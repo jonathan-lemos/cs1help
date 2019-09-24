@@ -13,10 +13,12 @@ export default class Page {
 
     public jsx(): JSX.Element {
         return (
-            <div id={this.id} key={this.id} className="page d-flex flex-column bg-light-3 my-2 px-2 w-100">
+            <div id={this.id} key={this.id} className="page">
                 <a href={`#${this.id}`} className="title-page mt-3 align-self-center">{this.title}</a>
                 <hr className="w-100"/>
-                {this.content}
+                <div className="page-content">
+                    {this.content}
+                </div>
             </div>
         )
     }

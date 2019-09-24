@@ -20,10 +20,11 @@ export class Fade extends React.Component<FadeProps, FadeState> {
     public componentDidUpdate(prevProps: FadeProps): void {
         if (this.props.render && !prevProps.render) {
             this.setState({active: true, render: true})
-        }
-        else if (!this.props.render && prevProps.render) {
-            this.setState({active: false});
-            setTimeout(() => {this.setState({render: false})}, 400);
+        } else if (!this.props.render && prevProps.render) {
+            this.setState({active: false, render: true});
+            setTimeout(() => {
+                !this.props.render && this.setState({active: false, render: false})
+            }, 400);
         }
     }
 

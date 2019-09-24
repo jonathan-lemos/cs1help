@@ -1,11 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+table {
+    padding: 0.5em 0;
+    margin: 0.75em 0;
+    background-color: #E4E4E4;
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.5em;
+    margin: 0.5em;
+    background-color: #FCFCFC;
+}
+
+.submodule {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.375em;
+    margin: 0.375em;
+    background-color: #F4F4F4;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.25em;
+    margin: 0.25em;
+    background-color: #E8E8E8;
+    width: 100%;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+li {
+    padding: 0.5em 0;
+}
+
+hr {
+    width: 100%;
+}
+
+p {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    text-align: center;
+}
+
 code {
     white-space: nowrap;
 }
 
 html {
     scroll-behavior: smooth;
-    background-color: #DDD;
     color: #333;
+}
+
+td {
+    text-align: center;
+    padding: 0.25rem;
 }
 
 div.main_content {
@@ -15,20 +99,26 @@ div.main_content {
 div.sidebar {
     align-items: stretch;
     bottom: 0;
-    border-left: #55555555 solid 0.25em;
+    border-left: #55555555 solid 0.25rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #E8E8E8;
     position: fixed;
     right: 0;
     top: 0;
     width: 20%;
+    padding-left: 0.5em;
+}
+
+div.sidebar-content {
 }
 
 div.sidebar > li {
     width: 100%;
-    border-bottom: #55555555 solid 0.25em;
+    border-bottom: #55555555 solid 0.25rem;
 }
 
 div.sidebar > li > a {
@@ -37,46 +127,53 @@ div.sidebar > li > a {
 
 div.sidebar > li {
     width: 100%;
-    border-bottom: #55555555 solid 0.25em;
+    border-bottom: #55555555 solid 0.25rem;
 }
 
 a.title-module {
     font-size: 200%;
     text-decoration: none;
     color: #333;
+    padding: 0.5rem 0;
 }
 
 a.title-submodule {
     font-size: 150%;
     text-decoration: none;
     color: #333;
+    padding: 0.5rem 0;
 }
 
 a.title-page {
     font-size: 125%;
     text-decoration: none;
     color: #333;
+    padding: 0.5rem 0;
 }
 
-.bg-light-1 {
-    background-color: #EFEFEF;
+.nav-module {
+    padding-top: 0.75em;
 }
 
-.bg-light-2 {
-    background-color: #E8E8E8;
+.nav-submodule {
+    padding: 0.375em 1em 0;
+    border-left: 0.25em #333333;
 }
 
-.bg-light-3 {
-    background-color: #E0E0E0;
+.nav-page {
+    padding: 0.25em 2em 0;
+    border-left: 0.125em #333333;
 }
 
 .nav-link {
+    padding: 0.5em 0;
     color: #333;
     text-decoration: none;
 }
 
-.nav-link-active {
+.nav-link-active, .nav-link:hover {
     color: #833;
+    font-weight: 600;
 }
 
 .fadein {
@@ -84,42 +181,48 @@ a.title-page {
 }
 
 .fadeout {
+    height: 0;
     animation: fadeout ease 0.4s forwards;
 }
 
 @keyframes fadein {
     from {
         opacity: 0;
-        transform: scaleY(0);
+        transform: translateX(100vw);
     }
     to {
         opacity: 1;
-        transform: scaleY(1);
+        transform: translateX(0);
     }
 }
 
 @keyframes fadeout {
     from {
         opacity: 1;
-        transform: scaleY(1);
+        transform: translateX(0);
     }
     to {
         opacity: 0;
-        transform: scaleY(0);
+        transform: translateX(100vw);
     }
 }
 
 div.code-block {
-    padding: 0.5rem;
+    padding: 1em;
+    margin: 0.5em;
     white-space: pre-wrap;
     font-family: monospace;
-    background-color: #D8D8D8;
+    text-align: left;
+    background-color: #E4E4E4;
 }
 
 span.code-block-inline {
+    padding: 0 0.25em;
+    margin: 0 0.25em;
     white-space: nowrap;
     font-family: monospace;
-    background-color: #D8D8D8;
+    text-align: left;
+    background-color: #E4E4E4;
 }
 
 span.code-keyword {

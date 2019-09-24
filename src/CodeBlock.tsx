@@ -45,7 +45,13 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
         },
         {
             key: /#.*$/,
-            style: "code-preprocessor"
+            style: "code-preprocessor",
+            nest: [
+                {
+                    key: /(?<=<).*?(?=>)/,
+                    style: "code-string"
+                }
+            ]
         }
     ],
     "gcc": [
@@ -70,10 +76,6 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
 };
 
 const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?: Array<{ key: RegExp, style: string }> }>): JSX.Element[] => {
-    if (patterns.length === 0) {
-        return str.map(e => <span className="pre">{e}</span>);
-    }
-
     const ret: JSX.Element[] = [];
     let buf = str.join("\n");
     while (buf !== "") {

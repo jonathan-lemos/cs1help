@@ -30,12 +30,12 @@ export default new Page("computerscience1-basicsofc-functions", "Functions", <di
         </tr>
         <tr>
             <td><CodeBlock language="c" text="int abs(int x)"/></td>
-            <td>math.h</td>
+            <td><CodeBlock text="math.h"/></td>
             <td>Takes an integer and returns its absolute value as an integer.</td>
         </tr>
         <tr>
             <td><CodeBlock language="c" text="int atoi(char* str)"/>*</td>
-            <td>stdlib.h</td>
+            <td><CodeBlock text="stdlib.h"/></td>
             <td>
                 Takes a string of numbers like <CodeBlock language="c" text='"123"'/> and returns the
                 equivalent integer <CodeBlock language="c" text="123"/>.
@@ -43,12 +43,12 @@ export default new Page("computerscience1-basicsofc-functions", "Functions", <di
         </tr>
         <tr>
             <td><CodeBlock language="c" text="double sqrt(double x)"/></td>
-            <td>math.h</td>
+            <td><CodeBlock text="math.h"/></td>
             <td>Takes a decimal and returns its square root.</td>
         </tr>
         <tr>
             <td><CodeBlock language="c" text="char* strcat(char* dst, char* src)"/></td>
-            <td>string.h</td>
+            <td><CodeBlock text="string.h"/></td>
             <td>Copies the string <CodeBlock text="src"/> into the string <CodeBlock text="dst"/> and returns <CodeBlock
                 text="dst"/></td>
         </tr>
@@ -63,11 +63,20 @@ export default new Page("computerscience1-basicsofc-functions", "Functions", <di
         the top of your C file.
     </p>
     <p>
-        Of course, you can also declare your own functions like below:
+        You can also declare your own functions like below:
         <CodeBlock language="c" text={[
             "double square(double x) {",
-            "   return x * x;",
+            "   double y = x * x;",
+            "   return y;",
             "}"
         ]}/>
+        The above function takes a single decimal parameter and outputs the square of that decimal.
+        The <CodeBlock language="c" text="return"/> keyword exits the current function and outputs the given value.
+        In this case, the <CodeBlock text="square"/> function outputs the value contained in the
+        variable <CodeBlock text="y"/>. In the case of a <CodeBlock language="c" text="void"/>-returning function,
+        <CodeBlock language="c" text="return;"/> simply exits the function.
+    </p>
+    <p>
+        Note that a function you make must always return a value of the correct type.
     </p>
 </div>);

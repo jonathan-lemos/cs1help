@@ -1,7 +1,7 @@
 import Page from "../../../Page";
 import React from "react";
 
-export default new Page("welcome-welcome-soyougotashitcs1professor", "So, you got a shit CS1 professor...",
+export default new Page("welcome-welcome-soyougotthatcs1professor", "So, you got...that...CS1 professor.",
     <div>
         <p>
             All you wanted to do is slap some code on a page and make sparks fly,
