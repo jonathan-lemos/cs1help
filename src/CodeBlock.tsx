@@ -12,11 +12,11 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             style: "code-keyword"
         },
         {
-            key: /\b[+-]?\d+(\.\d+)?([eE][+-]?\d+)?\b/,
+            key: /\b[+-]?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?\b/,
             style: "code-number"
         },
         {
-            key: /"(\\"|[^"])*?"/,
+            key: /"(?:\\"|[^"])*?"/,
             style: "code-string",
             nest: [
                 {
@@ -24,7 +24,7 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
                     style: "code-string-escape"
                 },
                 {
-                    key: /%.*?[xXfdusc%]/,
+                    key: /%.*?[xXfduscp%]/,
                     style: "code-string-percent"
                 }
             ]
@@ -48,7 +48,7 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             style: "code-preprocessor",
             nest: [
                 {
-                    key: /(?<=<).*?(?=>)/,
+                    key: /<(.*?)>/,
                     style: "code-string"
                 }
             ]
@@ -56,7 +56,7 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
     ],
     "gcc": [
         {
-            key: /\b'(\\'|[^'])*?"\b/,
+            key: /\b'(?:\\'|[^'])*?"\b/,
             style: "code-string"
         },
         {
@@ -90,14 +90,18 @@ const lex = (str: string[], patterns: Array<{ key: RegExp, style: string, nest?:
         let cname = "";
         for (const mat of patterns) {
             res = buf.match(mat.key);
-            if (res != null && res.index != null && (res.index < best[1] || (res.index === best[1] && best[0].length < res[0].length))) {
+            if (res == null) {
+                continue;
+            }
+            const matched = res[res.length - 1];
+            if (res.index != null && (res.index < best[1] || (res.index === best[1] && best[0].length < matched.length))) {
                 cname = mat.style;
                 if (!mat.nest) {
-                    best = [res[0], res.index];
+                    best = [matched, res.index + res[0].indexOf(matched)];
                     buf2 = [];
                 } else {
-                    best = [res[0], res.index];
-                    buf2 = lex([res[0]], mat.nest);
+                    best = [matched, res.index + res[0].indexOf(matched)];
+                    buf2 = lex([matched], mat.nest);
                     break;
                 }
             }

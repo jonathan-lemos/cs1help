@@ -207,10 +207,14 @@ a.title-page {
     }
 }
 
+blockquote {
+    border-left: 0.1rem solid #333;
+}
+
 div.code-block {
     padding: 1em;
     margin: 0.5em;
-    white-space: pre-wrap;
+    white-space: pre;
     font-family: monospace;
     text-align: left;
     background-color: #E4E4E4;

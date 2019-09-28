@@ -10,7 +10,7 @@ export default new Page("computerscience1-basicsofc-printf", "printf", <div>
             can print a simple string to the screen like below:
         </p>
         <CodeBlock language="c" text={[
-            'printf("Hello world\n");'
+            'printf("Hello world\\n");'
         ]}/>
         <p>
             Which prints <CodeBlock text="Hello world"/> followed by a "newline" to the screen.
@@ -29,7 +29,7 @@ export default new Page("computerscience1-basicsofc-printf", "printf", <div>
         </p>
         <p>
             A full list of <CodeBlock text="%"/> specifiers can be found <a
-            href="http://www.cplusplus.com/reference/cstdio/printf/">here</a>.
+            href="http://www.cplusplus.com/reference/cstdio/printf/" target="_blank">here</a>.
         </p>
         <p>
             A more complete list of examples can be found below:

@@ -4,7 +4,7 @@ import CodeBlock from "../../../../CodeBlock";
 
 export default new Page("computerscience1-whatdoido-askinggoodquestions", "Asking good questions", <div>
     <p>
-        So you want to ask a question, so you type:
+        So you want to ask a question, and you type:
         <blockquote>
             how i compare string number in C
         </blockquote>
