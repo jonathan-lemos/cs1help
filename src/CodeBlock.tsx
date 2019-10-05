@@ -44,7 +44,7 @@ const patterns: { [key: string]: Array<{ key: RegExp, style: string, nest?: Arra
             style: "code-comment"
         },
         {
-            key: /#.*$/,
+            key: /#.*$/m,
             style: "code-preprocessor",
             nest: [
                 {

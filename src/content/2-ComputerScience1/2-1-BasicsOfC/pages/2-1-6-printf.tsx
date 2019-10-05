@@ -29,7 +29,7 @@ export default new Page("computerscience1-basicsofc-printf", "printf", <div>
         </p>
         <p>
             A full list of <CodeBlock text="%"/> specifiers can be found <a
-            href="http://www.cplusplus.com/reference/cstdio/printf/" target="_blank">here</a>.
+            href="http://www.cplusplus.com/reference/cstdio/printf/" target="_blank" rel="noopener noreferrer">here</a>.
         </p>
         <p>
             A more complete list of examples can be found below:

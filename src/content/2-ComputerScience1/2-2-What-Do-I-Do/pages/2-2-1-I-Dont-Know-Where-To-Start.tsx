@@ -1,6 +1,5 @@
 import Page from "../../../Page";
 import React from "react";
-import CodeBlock from "../../../../CodeBlock";
 
 export default new Page("computerscience1-whatdoido-idontknowwheretostart", "I don't know where to start", <div>
     <p>
@@ -20,8 +19,14 @@ export default new Page("computerscience1-whatdoido-idontknowwheretostart", "I d
                 project done
             </li>
             <li>
+                If you can identify the general things you need to implement, but not how to implement them,
+                then try <a href={"#coming-soon"}>Googling</a> how to do things. <q>how do i do something forever
+                in C</q>, and <q>how do i do a while loop in bash</q> are appropriate questions to Google, but
+                <q>how do i do rock paper scissors in C</q> is not.
+            </li>
+            <li>
                 If you cannot identify even a few things to do, then we've got quite the problem here, chief.
-                At this point, you could try <a href="#computerscience1-whatdoido-askinggoodquestions">asking
+                At this point, you could try <a href={"#computerscience1-whatdoido-askinggoodquestions"}>asking
                 questions</a>. Be honest about your predicament; don't say "How do I do rock paper scissors in C?";
                 instead, say "I have no idea where to start with CS1 project 2."
             </li>

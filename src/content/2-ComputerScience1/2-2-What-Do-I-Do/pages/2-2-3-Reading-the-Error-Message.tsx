@@ -25,6 +25,22 @@ export default new Page("computerscience1-itisntworking-readingtheerrormessage",
         "4th line, 9th character". That's where your error is located.
     </p>
     <p>
-        
+        You should also try reading the message next to the line number, which in this case says
+        <CodeBlock language="gcc" text="‘hello’ undeclared (first use in this function)"/>. By reading this,
+        you can determine that somewhere around <CodeBlock text="hello"/>, there is an error. In this case, the quotes
+        are missing around <CodeBlock text="hello world"/>. Putting quotes gives us our new program
+        <CodeBlock language="c" text={[
+            "#include <stdio.h>",
+            "",
+            "int main(void) {",
+            '   printf("hello world");',
+            "}"
+        ]}/>
+        which compiles and runs successfully.
+    </p>
+    <p>
+        Pretty much any language that has errors will tell you what line the error occurs on. However, like in this
+        example, the error message can be less than helpful. In that case, plugging the error message into Google
+        and clicking on the first Stack Overflow link you see usually fixes the problem.
     </p>
 </div>);

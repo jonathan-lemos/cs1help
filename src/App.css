@@ -273,3 +273,11 @@ span.pre {
     white-space: pre;
 }
 
+.text-green {
+    color: #44AA44;
+}
+
+.text-red {
+    color: #AA4444;
+}
+
